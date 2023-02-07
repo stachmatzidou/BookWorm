@@ -1,12 +1,12 @@
 import bcryptjs from "bcryptjs";
 import User from "../models/User.js";
-
+import jwt from "jsonwebtoken";
 
 export const signUp = async (req, res) => {
     //checking if all required information is available
     if (!(req.body.username && req.body.email && req.body.password)) {
         return res.json("Fields username, email and password are required!");
-    };
+    }
     //if all info is there
     try {
         //hashing the password
@@ -24,17 +24,48 @@ export const signUp = async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.json("Server error.");
+    }
+};
+
+export const signIn = async (req, res) => {
+    //check if email and password are available
+    if (!(req.body.email && req.body.password)) {
+        return res.json("Fields email and password are required!");
+    }
+    //if they are available
+    try {
+        //find the user using email and get username, email and password
+        const user = await User.findOne({ email: req.body.email }).select("username email password");
+        //if no user is found
+        if (!user) {
+            return res.status(404).json("No user found.");
+        }
+        //if user exists check if password is correct
+        const isPasswordCorrect = await bcryptjs.compare(
+            req.body.password,
+            user.password
+        );
+        //if password is incorrect
+        if (!isPasswordCorrect) {
+            return res.json("Password incorrect!");
+        }
+        //if password is correct we create the payload
+        const payload = {
+            id: user._id,
+            username: user.username,
+        };
+        //then we create the token
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: "1d",
+        });
+        //store the token in a cookie
+        return res.cookie("access_token", token, { httpOnly: true }).status(200).json({"message": "Logged in Successfully"});
+    } catch (error) {
+        console.log(error);
+        return res.json("Server error.");
     };
 };
 
-export const signIn = () => {
+export const signOut = () => {};
 
-};
-
-export const signOut = () => {
-
-};
-
-export const status = () => {
-
-};
+export const status = () => {};
