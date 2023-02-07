@@ -59,13 +59,30 @@ export const signIn = async (req, res) => {
             expiresIn: "1d",
         });
         //store the token in a cookie
-        return res.cookie("access_token", token, { httpOnly: true }).status(200).json({"message": "Logged in Successfully"});
+        return res.cookie("access_token", token, { httpOnly: true }).status(200).json({message: "Signed in Successfully"});
     } catch (error) {
         console.log(error);
         return res.json("Server error.");
     };
 };
 
-export const signOut = () => {};
+export const signOut = (req, res) => {
+    //Clearing the cookie when user signs out
+    res.clearCookie("access_token");
+    return res.status(200).json({message: "Signed out Successfully."});
+};
 
-export const status = () => {};
+export const status = (req, res) => {
+    // Check if the user is logged in or not
+    const token = req.cookies.access_token;
+    //if there is no token set status to false
+    if (!token) {
+        return res.json(false);
+    };
+    return jwt.verify(token, process.env.JWT_SECRET, (error) => {
+        if (error) {
+            return res.json(false);
+        };
+        return res.json(true);
+    });
+};
