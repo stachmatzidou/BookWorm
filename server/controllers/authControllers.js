@@ -1,11 +1,12 @@
 import bcryptjs from "bcryptjs";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
+import createError from "../utils/createError.js";
 
-export const signUp = async (req, res) => {
+export const signUp = async (req, res, next) => {
     //checking if all required information is available
     if (!(req.body.username && req.body.email && req.body.password)) {
-        return res.json("Fields username, email and password are required!");
+        return next(createError({status: 400, message: "Fields username, email and password are required!"}));
     }
     //if all info is there
     try {
@@ -23,14 +24,14 @@ export const signUp = async (req, res) => {
         return res.status(201).json("New User Created.");
     } catch (error) {
         console.log(error);
-        return res.json("Server error.");
+        return next(error);
     }
 };
 
-export const signIn = async (req, res) => {
+export const signIn = async (req, res, next) => {
     //check if email and password are available
     if (!(req.body.email && req.body.password)) {
-        return res.json("Fields email and password are required!");
+        return next(createError({status: 400, message: "Fields email and password are required!"}));
     }
     //if they are available
     try {
@@ -38,7 +39,7 @@ export const signIn = async (req, res) => {
         const user = await User.findOne({ email: req.body.email }).select("username email password");
         //if no user is found
         if (!user) {
-            return res.status(404).json("No user found.");
+            return next(createError({status: 404, message: "No user found."}));
         }
         //if user exists check if password is correct
         const isPasswordCorrect = await bcryptjs.compare(
@@ -47,7 +48,7 @@ export const signIn = async (req, res) => {
         );
         //if password is incorrect
         if (!isPasswordCorrect) {
-            return res.json("Password incorrect!");
+            return next(createError({status: 400, message: "Incorrect Password."}));
         }
         //if password is correct we create the payload
         const payload = {
@@ -59,10 +60,10 @@ export const signIn = async (req, res) => {
             expiresIn: "1d",
         });
         //store the token in a cookie
-        return res.cookie("access_token", token, { httpOnly: true }).status(200).json({message: "Signed in Successfully"});
+        return res.cookie("access_token", token, { httpOnly: true }).status(200).json({message: "Signed in Successfully!"});
     } catch (error) {
         console.log(error);
-        return res.json("Server error.");
+        return next(error);
     };
 };
 
