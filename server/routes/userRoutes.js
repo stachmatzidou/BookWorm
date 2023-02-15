@@ -5,7 +5,7 @@ const router = express.Router();
 //Creating route to get user info
 router.get("/current", getUserInfo);
 //Creating route to update user info
-router.put("/current", updateUserInfo);
+router.patch("/current", updateUserInfo);
 
 
 
