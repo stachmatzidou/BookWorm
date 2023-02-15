@@ -1,11 +1,20 @@
-import React from "react";
-import "./SignIn.css";
+import React, { useEffect } from "react";
+import "./Auth.css";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth.jsx";
 import { toast } from "react-hot-toast";
 
 const SignIn = () => {
     const navigate = useNavigate();
+    const { auth } = useAuth();
+    //Check the Auth every time and auth and navigate are updated
+    useEffect(() => {
+        if (auth) {
+            navigate("/home");
+        }
+    }, [auth, navigate]);
+    
     const signIn = async (e) => {
         //prevent form default behavior
         e.preventDefault();
@@ -16,7 +25,7 @@ const SignIn = () => {
         try {
             await axios.post("api/auth/signin", {
                 email,
-                password
+                password,
             });
             //if the values are correct navigate to the user home page
             navigate("/home");
@@ -24,36 +33,38 @@ const SignIn = () => {
         } catch (error) {
             console.log(error);
             toast.error("Sign In Failed!");
-        };
+        }
     };
     return (
         <div className="signin">
-            <div className="signin-form-container">
-                <h1 className="signin-title">Welcome Back</h1>
-                <form action="" className="signin-form" onSubmit={signIn}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="Email"
-                        required
-                    />
-                    <label htmlFor="password">Password</label>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        required
-                    />
-                    <button className="signin-btn">Sign In</button>
-                </form>
-                <p>
-                    Don't have an account? <Link to="/signup">Sign Up</Link>
-                </p>
-            </div>
             <div className="signin-form-aside"></div>
+            <div className="signin-form-container">
+                <div className="signin-form-container-inner">
+                    <h1 className="signin-title">Welcome Back</h1>
+                    <form action="" className="signin-form" onSubmit={signIn}>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="Email"
+                            required
+                        />
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            required
+                        />
+                        <button className="signin-btn">Sign In</button>
+                    </form>
+                    <p>
+                        Don't have an account? <Link to="/signup">Sign Up</Link>
+                    </p>
+                </div>
+            </div>
         </div>
     );
 };

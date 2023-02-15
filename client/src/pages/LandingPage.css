@@ -1,8 +1,8 @@
 .landing-container {
-    width: 100%;
-    max-width: 120rem;
-    height: 100%;
-    margin: 0 auto;
+    width: 100vw;
+    /* max-width: 120rem; */
+    height: 100vh;
+    /* margin: 0 auto; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,15 +11,25 @@
 .landing-container-left {
     width: 50%;
     height: 100%;
-    padding: 2rem;
+    padding-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: end;
     background-color: #476a31;
     color: #ffffff;
 }
 
+.landing-container-left-inner {
+    width: 97%;
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 .landing-headline {
+    margin: 0;
     font-size: 5rem;
 }
 

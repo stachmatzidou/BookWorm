@@ -1,12 +1,10 @@
-body {
-    margin: 0;
-}
-
 html {
     font-size: 10px;
 }
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: 'Gentium Book Plus', serif;
     font-size: 2rem;
