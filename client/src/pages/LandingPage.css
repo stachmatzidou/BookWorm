@@ -1,0 +1,51 @@
+.landing-container {
+    width: 100%;
+    max-width: 120rem;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-container-left {
+    width: 50%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #476a31;
+    color: #ffffff;
+}
+
+.landing-headline {
+    font-size: 5rem;
+}
+
+.signup-link {
+    text-decoration: none;
+    color: hotpink;
+}
+
+.landing-container-right {
+    width: 50%;
+    height: 100%;
+    background-color: #639d40;
+}
+
+.landing-main-right img {
+    width: 50%;
+}
+
+.landing-footer {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+}
+
+.landing-footer img {
+    height: 8rem;
+}
