@@ -24,6 +24,15 @@
 }
 
 .user {
+    width: 4rem;
+    height: 4rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #476a31;
+    color: #ffffff;
     cursor: pointer;
 }
 

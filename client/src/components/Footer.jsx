@@ -1,10 +1,11 @@
 import React from "react";
 import "./Footer.css";
 
-const Footer = () => {
+const Footer = ({books}) => {
     return (
         <footer className="footer">
-            <p>Copyright 2023</p>
+            {books.length && <p>{books.length} books in Inventory</p>}
+            {/* <p>{books?.length} books in Inventory</p> */}
         </footer>
     );
 };

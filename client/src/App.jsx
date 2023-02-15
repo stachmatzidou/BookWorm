@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
 import Layout from "./pages/Layout.jsx";
@@ -15,6 +16,9 @@ import Error from "./pages/Error.jsx";
 import PrivateRoutes from "./pages/PrivateRoutes";
 
 function App() {
+    const [user, setUser] = useState(null);
+    const [books, setBooks] = useState([]);
+
     return (
         <>
             <Toaster
@@ -28,8 +32,21 @@ function App() {
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route element={<PrivateRoutes />}>
-                    <Route path="/home" element={<Layout />}>
-                        <Route index element={<Home />} />
+                    <Route
+                        path="/home"
+                        element={
+                            <Layout
+                                user={user}
+                                setUser={setUser}
+                                books={books}
+                                setBooks={setBooks}
+                            />
+                        }
+                    >
+                        <Route
+                            index
+                            element={<Home books={books} setBooks={setBooks} />}
+                        />
                         <Route path="/home/book">
                             <Route index element={<NewBook />} />
                             <Route path=":id" element={<BookPage />} />

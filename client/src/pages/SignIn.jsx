@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth.jsx";
 import { toast } from "react-hot-toast";
 
 const SignIn = () => {
+
     const navigate = useNavigate();
     const { auth } = useAuth();
     //Check the Auth every time and auth and navigate are updated
