@@ -38,7 +38,7 @@ function App() {
                         <Route path="/home/profile" element={<Profile />} />
                     </Route>
                 </Route>
-                <Route path="/*" element={<Error />} />
+                <Route path="*" element={<Error />} />
             </Routes>
         </>
     );
