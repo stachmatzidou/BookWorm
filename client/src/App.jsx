@@ -18,6 +18,8 @@ import PrivateRoutes from "./pages/PrivateRoutes";
 function App() {
     const [user, setUser] = useState(null);
     const [books, setBooks] = useState([]);
+    const [search, setSearch] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
 
     return (
         <>
@@ -38,18 +40,22 @@ function App() {
                             <Layout
                                 user={user}
                                 setUser={setUser}
+                                search={search}
+                                setSearch={setSearch}
                                 books={books}
                                 setBooks={setBooks}
+                                searchResults={searchResults}
+                                setSearchResults={setSearchResults}
                             />
                         }
                     >
                         <Route
                             index
-                            element={<Home books={books} setBooks={setBooks} />}
+                            element={<Home books={books} />}
                         />
                         <Route path="/home/book">
                             <Route index element={<NewBook />} />
-                            <Route path=":id" element={<BookPage />} />
+                            <Route path=":id" element={<BookPage books={books} setBooks={setBooks}/>} />
                         </Route>
                         <Route path="/home/about" element={<About />} />
                         <Route

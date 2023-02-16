@@ -5,7 +5,16 @@ import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import { Outlet } from "react-router-dom";
 
-const Layout = ({ user, setUser, books, setBooks }) => {
+const Layout = ({
+    user,
+    setUser,
+    search,
+    setSearch,
+    books,
+    setBooks,
+    searchResults,
+    setSearchResults,
+}) => {
     const getUserInfo = async () => {
         try {
             const { data } = await axios.get("/api/users/current");
@@ -28,11 +37,18 @@ const Layout = ({ user, setUser, books, setBooks }) => {
         getUserInfo();
         getAllBooks();
     }, []);
-console.log(books);
+
     return (
         <div className="app">
             <Header user={user} />
-            <Navbar />
+            <Navbar
+                search={search}
+                setSearch={setSearch}
+                books={books}
+                setBooks={setBooks}
+                searchResults={searchResults}
+                setSearchResults={setSearchResults}
+            />
             <main className="main">
                 <Outlet />
             </main>
