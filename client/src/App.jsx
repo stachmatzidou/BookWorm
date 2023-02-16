@@ -52,7 +52,10 @@ function App() {
                             <Route path=":id" element={<BookPage />} />
                         </Route>
                         <Route path="/home/about" element={<About />} />
-                        <Route path="/home/profile" element={<Profile />} />
+                        <Route
+                            path="/home/profile"
+                            element={<Profile user={user} setUser={setUser} />}
+                        />
                     </Route>
                 </Route>
                 <Route path="*" element={<Error />} />

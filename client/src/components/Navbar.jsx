@@ -2,15 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ search, setSearch }) => {
     return (
         <nav className="navbar">
             <div className="navbar-left">
-                <input
-                    className="search-books"
-                    type="text"
-                    placeholder="Search Books"
-                />
+                <form action="">
+                    <label htmlFor="search"></label>
+                    <input
+                        className="search-books"
+                        id="search"
+                        type="text"
+                        placeholder="Search Books"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </form>
             </div>
             <div className="navbar-right">
                 <Link className="page-link" to="/home">

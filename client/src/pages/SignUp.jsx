@@ -56,7 +56,7 @@ const SignUp = () => {
             <div className="signup-form-container">
                 <div className="signup-form-container-inner">
                     <h1 className="signup-title">Create Account</h1>
-                    <form action="" className="signup-form" onSubmit={signUp}>
+                    <form className="signup-form" onSubmit={signUp}>
                         <label htmlFor="username">Username</label>
                         <input
                             id="username"

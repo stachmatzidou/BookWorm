@@ -10,11 +10,12 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    /* text-align: center; */
     border: 0.2rem solid #476a31;
 
 }
 
 .main {
+    width: 100%;
     flex-grow: 1;
 }

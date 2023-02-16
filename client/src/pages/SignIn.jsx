@@ -42,7 +42,7 @@ const SignIn = () => {
             <div className="signin-form-container">
                 <div className="signin-form-container-inner">
                     <h1 className="signin-title">Welcome Back</h1>
-                    <form action="" className="signin-form" onSubmit={signIn}>
+                    <form className="signin-form" onSubmit={signIn}>
                         <label htmlFor="email">Email</label>
                         <input
                             id="email"

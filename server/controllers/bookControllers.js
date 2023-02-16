@@ -5,7 +5,7 @@ import createError from "../utils/createError.js";
 export const getAllBooks = async (req, res, next) => {
     try {
         const books = await Book.find({ user: req.user.id });
-        return res.status(200).json(books)
+        return res.status(200).json(books);
     } catch (error) {
         return next(error);
     };

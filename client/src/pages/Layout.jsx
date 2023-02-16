@@ -17,7 +17,7 @@ const Layout = ({ user, setUser, books, setBooks }) => {
 
     const getAllBooks = async () => {
         try {
-            const { data } = await axios.get("api/books");
+            const { data } = await axios.get("/api/books");
             setBooks(data);
         } catch (error) {
             console.log(error);
@@ -28,7 +28,7 @@ const Layout = ({ user, setUser, books, setBooks }) => {
         getUserInfo();
         getAllBooks();
     }, []);
-
+console.log(books);
     return (
         <div className="app">
             <Header user={user} />
