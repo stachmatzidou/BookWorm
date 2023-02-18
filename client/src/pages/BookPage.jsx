@@ -31,8 +31,8 @@ const BookPage = ({ books, setBooks }) => {
             <h2>{book.pages}</h2>
             <h2>{book.description}</h2>
             <h2>{book.isRead ? "You have already read this book." : "You haven't read this book yet..."}</h2>
-            <button onClick={() => handleUpdate(book.id)}>Update</button>
-            <button onClick={() => handleDelete(book.id)}>Delete</button>
+            <button onClick={() => handleUpdate()}>Update</button>
+            <button onClick={() => handleDelete()}>Delete</button>
         </>}
     </div>);
 };
