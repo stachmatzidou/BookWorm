@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -10,6 +10,15 @@ const Navbar = ({
     searchResults,
     setSearchResults,
 }) => {
+
+    useEffect(() => {
+        const filteredResult = books.filter(book => {
+            return ((book.title.toLowerCase()).includes(search.toLowerCase()))
+            || ((book.author.toLowerCase()).includes(search.toLowerCase()));
+        });
+        setSearchResults(filteredResult.reverse());
+    }, [books, search]);
+
     return (
         <nav className="navbar">
             <div className="navbar-left">

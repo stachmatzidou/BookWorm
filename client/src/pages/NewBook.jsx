@@ -13,7 +13,6 @@ const NewBook = ({ books, setBooks }) => {
     const [showBarcodeScanner, setShowBarcodeScanner] = useState(false);
     const [code, setCode] = useState("");
 
-    console.log(code);
 
     const getScannedData = async () => {
         if (code !== "") {
@@ -22,7 +21,6 @@ const NewBook = ({ books, setBooks }) => {
             ).then((response) => response.json());
 
             console.log(data);
-            // .items[0].volumeInfo);
 
             if (data.items) {
                 const title = data.items[0].volumeInfo.title;

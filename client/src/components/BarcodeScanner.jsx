@@ -15,7 +15,6 @@ const BarcodeScanner = ({
                 Go Back
             </button>
             <Scanner showBarcodeScanner={showBarcodeScanner} setShowBarcodeScanner={setShowBarcodeScanner} code={code} setCode={setCode} />
-            {/* <p>Barcode detected:{code}</p> */}
         </div>
     );
 };
