@@ -1,5 +1,6 @@
 .header {
-    padding: 1rem;
+    min-height: 6rem;
+    padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -7,15 +8,6 @@
 
 .header-left span {
     color: #476a31;
-}
-
-.signin-link {
-    padding: 0.5rem 1rem;
-    border: none;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #476a31;
-    cursor: pointer;
 }
 
 .header-right {

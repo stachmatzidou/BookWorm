@@ -22,6 +22,7 @@ function App() {
     const [books, setBooks] = useState([]);
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <>
@@ -48,21 +49,60 @@ function App() {
                                 setBooks={setBooks}
                                 searchResults={searchResults}
                                 setSearchResults={setSearchResults}
+                                // isLoading={isLoading}
+                                setIsLoading={setIsLoading}
                             />
                         }
                     >
                         <Route
                             index
-                            element={<Home searchResults={searchResults} setSearchResults={setSearchResults} books={books} />}
+                            element={
+                                <Home
+                                    searchResults={searchResults}
+                                    setSearchResults={setSearchResults}
+                                    books={books}
+                                    isLoading={isLoading}
+                                    // setIsLoading={setIsLoading}
+                                />
+                            }
                         />
                         <Route path="book">
-                            <Route index element={<NewBook books={books} setBooks={setBooks} />} />
-                            <Route path=":id" element={<BookPage books={books} setBooks={setBooks}/>} />
+                            <Route
+                                index
+                                element={
+                                    <NewBook
+                                        books={books}
+                                        setBooks={setBooks}
+                                    />
+                                }
+                            />
+                            <Route
+                                path=":id"
+                                element={
+                                    <BookPage
+                                        books={books}
+                                        setBooks={setBooks}
+                                    />
+                                }
+                            />
                         </Route>
                         <Route path="about" element={<About />} />
-                        <Route path="profile" >
-                            <Route index element={<Profile user={user} setUser={setUser} />} />
-                            <Route path="edit" element={<EditProfile user={user} setUser={setUser} />} />
+                        <Route path="profile">
+                            <Route
+                                index
+                                element={
+                                    <Profile user={user} setUser={setUser} />
+                                }
+                            />
+                            <Route
+                                path="edit"
+                                element={
+                                    <EditProfile
+                                        user={user}
+                                        setUser={setUser}
+                                    />
+                                }
+                            />
                             <Route path="password" element={<EditPassword />} />
                         </Route>
                     </Route>

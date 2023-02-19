@@ -1,11 +1,11 @@
 import React from "react";
-import { PacmanLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
 import "./Spinner.css";
 
 const Spinner = () => {
     return (
         <div className="spinner-wrapper">
-            <PacmanLoader color="#0079bf" />
+            < ClockLoader color="#476a31" />
         </div>
     );
 };

@@ -14,6 +14,8 @@ const Layout = ({
     setBooks,
     searchResults,
     setSearchResults,
+    // isLoading,
+    setIsLoading
 }) => {
     const getUserInfo = async () => {
         try {
@@ -26,8 +28,10 @@ const Layout = ({
 
     const getAllBooks = async () => {
         try {
+            setIsLoading(true);
             const { data } = await axios.get("/api/books");
             setBooks(data);
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
         }
