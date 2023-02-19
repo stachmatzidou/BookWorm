@@ -53,7 +53,7 @@ export const updateBook = async (req, res, next) => {
             category: req.body.category,
             description: req.body.description,
             pages: req.body.pages,
-            isRead: req.body.isRead,
+            // isRead: req.body.isRead,
             user: req.user.id,
         }, {new: true});
         return res.status(200).json(updatedBook);

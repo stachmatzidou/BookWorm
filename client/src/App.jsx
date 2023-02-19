@@ -51,7 +51,7 @@ function App() {
                     >
                         <Route
                             index
-                            element={<Home searchResults={searchResults} />}
+                            element={<Home searchResults={searchResults} setSearchResults={setSearchResults} books={books} />}
                         />
                         <Route path="/home/book">
                             <Route index element={<NewBook books={books} setBooks={setBooks} />} />

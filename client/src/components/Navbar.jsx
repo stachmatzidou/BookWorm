@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = ({
@@ -10,11 +10,12 @@ const Navbar = ({
     searchResults,
     setSearchResults,
 }) => {
-
     useEffect(() => {
-        const filteredResult = books.filter(book => {
-            return ((book.title.toLowerCase()).includes(search.toLowerCase()))
-            || ((book.author.toLowerCase()).includes(search.toLowerCase()));
+        const filteredResult = books.filter((book) => {
+            return (
+                book.title.toLowerCase().includes(search.toLowerCase()) ||
+                book.author.toLowerCase().includes(search.toLowerCase())
+            );
         });
         setSearchResults(filteredResult.reverse());
     }, [books, search]);
@@ -22,17 +23,20 @@ const Navbar = ({
     return (
         <nav className="navbar">
             <div className="navbar-left">
-                <form action="">
-                    <label htmlFor="search"></label>
-                    <input
-                        className="search-books"
-                        id="search"
-                        type="text"
-                        placeholder="Search Books"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </form>
+                {useParams()["*"] === "home" && (
+                    <form action="">
+                        <label htmlFor="search"></label>
+                        <input
+                            className="search-books"
+                            id="search"
+                            name="search"
+                            type="text"
+                            placeholder="Search By Title or Author"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+                    </form>
+                )}
             </div>
             <div className="navbar-right">
                 <Link className="page-link" to="/home">
