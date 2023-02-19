@@ -16,25 +16,25 @@ export const getUserInfo = async (req, res, next) => {
 
 //Update current user information
 export const updateUserInfo = async (req, res, next) => {
-    console.log(req.user.id);
-
+    let hashedPassword;
     try {
-        //hashing the password
-        // const salt = await bcryptjs.genSalt(10);
-        // const hashedPassword = await bcryptjs.hash(req.body.password, salt);
+        if (req.body.password) {
+            //hashing the password
+            const salt = await bcryptjs.genSalt(10);
+            hashedPassword = await bcryptjs.hash(req.body.password, salt);
+        };
+
         //find user by id and update their info
-        const updatedUser = await User.findByIdAndUpdate(
+        await User.findByIdAndUpdate(
             req.user.id,
-                {
-                username: req.body.username,
-                email: req.body.email,
-                // password: req.body.password,
-                // password: hashedPassword
-                }
-            ,
+            {
+                username: req.body.username || req.user.username,
+                email: req.body.email || req.user.email,
+                password: hashedPassword || req.user.password,
+            },
             { new: true }
-        ).select("username email");
-        return res.status(200).json(updatedUser);
+        );
+        return res.status(200).json("User Updated Successfully.");
     } catch (error) {
         return next(error);
     };

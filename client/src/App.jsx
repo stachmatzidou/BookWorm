@@ -14,6 +14,8 @@ import About from "./pages/About.jsx";
 import Profile from "./pages/Profile.jsx";
 import Error from "./pages/Error.jsx";
 import PrivateRoutes from "./pages/PrivateRoutes";
+import EditProfile from "./pages/EditProfile";
+import EditPassword from "./pages/EditPassword.jsx";
 
 function App() {
     const [user, setUser] = useState(null);
@@ -53,15 +55,16 @@ function App() {
                             index
                             element={<Home searchResults={searchResults} setSearchResults={setSearchResults} books={books} />}
                         />
-                        <Route path="/home/book">
+                        <Route path="book">
                             <Route index element={<NewBook books={books} setBooks={setBooks} />} />
                             <Route path=":id" element={<BookPage books={books} setBooks={setBooks}/>} />
                         </Route>
-                        <Route path="/home/about" element={<About />} />
-                        <Route
-                            path="/home/profile"
-                            element={<Profile user={user} setUser={setUser} />}
-                        />
+                        <Route path="about" element={<About />} />
+                        <Route path="profile" >
+                            <Route index element={<Profile user={user} setUser={setUser} />} />
+                            <Route path="edit" element={<EditProfile user={user} setUser={setUser} />} />
+                            <Route path="password" element={<EditPassword />} />
+                        </Route>
                     </Route>
                 </Route>
                 <Route path="*" element={<Error />} />

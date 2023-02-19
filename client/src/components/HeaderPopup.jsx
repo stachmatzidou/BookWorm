@@ -19,7 +19,7 @@ const HeaderPopup = () => {
     return (
         <div className="header-popup">
             <ul>
-                <li><Link className="account-link" to="/home/profile">Manage your account</Link></li>
+                <li><Link className="account-link" to="/home/profile">My account</Link></li>
                 <li onClick={signout}>Sign Out</li>
             </ul>
         </div>
