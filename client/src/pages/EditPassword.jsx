@@ -31,9 +31,9 @@ const EditPassword = () => {
         <div>
             <form onSubmit={updatePassword}>
                 <label htmlFor="password">New Password</label>
-                <input id="password" name="password" type="text" required />
+                <input id="password" name="password" type="password" required />
                 <label htmlFor="confirm">Confirm New Password</label>
-                <input id="confirm" name="confirm" type="text" required />
+                <input id="confirm" name="confirm" type="password" required />
                 <button>Update</button>
             </form>
             <Link to="/home/profile">Go Back</Link>

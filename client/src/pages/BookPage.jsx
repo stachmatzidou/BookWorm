@@ -44,7 +44,7 @@ const BookPage = ({ books, setBooks }) => {
             await axios.delete(`/api/books/${id}`);
             const newList = books.filter((book) => book._id !== id);
             setBooks(newList);
-            toast.success("Books Removed Successfully!");
+            toast.success("Book Removed Successfully!");
             navigate("/home");
         } catch (error) {
             console.log(error);
