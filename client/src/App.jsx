@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import "./App.css";
+import "./App.scss";
 import Layout from "./pages/Layout.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import SignIn from "./pages/SignIn.jsx";
@@ -29,7 +28,7 @@ function App() {
             <Toaster
                 position="top-center"
                 toastOptions={{
-                    style: { fontSize: "1.2rem" },
+                    style: { fontSize: "1.8rem" },
                 }}
             ></Toaster>
             <Routes>

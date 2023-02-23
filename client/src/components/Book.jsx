@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Book.css";
+import "../styles/Book.scss";
 
 const Book = ({ book }) => {
 
     return (
         <article className="book">
             <h1 className="book-title capitalize">{book.title}</h1>
-            <p><span >by</span> <span className="book-author capitalize">{book.author}</span></p>
+            <p><span >written by</span> <span className="book-author capitalize"><b>{book.author}</b></span></p>
             <Link to={`/home/book/${book._id}`} book={book}>
                 More Info
             </Link>

@@ -1,0 +1,23 @@
+@import "./Variables.scss";
+
+.profile-info-container {
+    @include update-user-container;
+}
+
+.profile-info-form {
+    @include update-user-form;
+}
+
+.profile-info-buttons {
+    @include update-user-button-container;
+}
+
+.profile-go-back,
+.profile-update {
+    @include update-user-button;
+}
+
+.profile-go-back:hover,
+.profile-update:hover {
+    background-color: $darkGreenColor;
+}

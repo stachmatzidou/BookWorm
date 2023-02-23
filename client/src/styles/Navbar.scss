@@ -1,0 +1,76 @@
+@import "../styles/Variables.scss";
+
+.navbar {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 2rem;
+    background-color: $greenColor;
+}
+
+.navbar-left {
+    height: 4rem;
+    .search-form {
+        width: 100%;
+        min-width: 23rem;
+        height: 4rem;
+
+        label {
+            width: 0;
+            position: absolute;
+            left: -100000px;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0;
+            outline: none;
+            font-size: 2rem;
+            color: $darkGreenColor;
+        }
+
+        input::placeholder {
+            color: $darkGreenColor;
+            opacity: 0.7;
+        }
+    }
+}
+
+.navbar-right {
+    width: 100%;
+    height: 4rem;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-right a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+@media only screen and (max-width: 450px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1rem;
+        gap: 0;
+    }
+
+    .navbar-left,
+    .navbar-right {
+        width: 100%;
+        justify-content: center;
+        gap: 2rem;
+        font-size: 1.8rem;
+
+        .search-form input {
+            font-size: 1.8rem;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Auth.css";
+import "../styles/Auth.scss";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -92,7 +92,7 @@ const SignUp = () => {
                         />
                         <button className="signup-btn">Sign Up</button>
                     </form>
-                    <p>
+                    <p className="go-to-signin">
                         Already have an account?{" "}
                         <Link to="/signin">Sign In</Link>
                     </p>

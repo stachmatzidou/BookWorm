@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import "../styles/EditPassword.scss";
 
 const EditPassword = () => {
     const navigate = useNavigate();
@@ -28,15 +29,17 @@ const EditPassword = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={updatePassword}>
+        <div className="update-password-container">
+            <form className="update-password-form" onSubmit={updatePassword}>
                 <label htmlFor="password">New Password</label>
                 <input id="password" name="password" type="password" required />
                 <label htmlFor="confirm">Confirm New Password</label>
                 <input id="confirm" name="confirm" type="password" required />
-                <button>Update</button>
+                <div className="update-password-buttons">
+                    <button type="button" className="update-password-go-back" onClick={() => navigate("/home/profile")}>Go Back</button>
+                    <button className="update-password-update">Update</button>
+                </div>
             </form>
-            <Link to="/home/profile">Go Back</Link>
         </div>
     );
 };

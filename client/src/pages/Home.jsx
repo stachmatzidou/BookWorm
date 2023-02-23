@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Book from "../components/Book.jsx";
 import Spinner from "../components/Spinner.jsx";
-import "./Home.css";
+import "../styles/Home.scss";
 
 const Home = ({
     books,
@@ -16,11 +16,7 @@ const Home = ({
     return (
         <div className="home">
             {isLoading && <Spinner />}
-            {!isLoading && (
-                <div>
-                    {elements.length ? elements : <p>No books to display.</p>}
-                </div>
-            )}
+            {!isLoading && elements.length ? elements : <p>No books to display.</p>}
         </div>
     );
 };

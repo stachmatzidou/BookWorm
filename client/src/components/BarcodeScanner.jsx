@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Quagga from "quagga";
-import "./BarcodeScanner.css";
+import "../styles/BarcodeScanner.scss";
 import Scanner from "./Scanner";
 
 const BarcodeScanner = ({
@@ -11,7 +11,7 @@ const BarcodeScanner = ({
 }) => {
     return (
         <div className="barcode-scanner">
-            <button onClick={() => setShowBarcodeScanner(!showBarcodeScanner)}>
+            <button className="go-back" onClick={() => setShowBarcodeScanner(!showBarcodeScanner)}>
                 Go Back
             </button>
             <Scanner showBarcodeScanner={showBarcodeScanner} setShowBarcodeScanner={setShowBarcodeScanner} code={code} setCode={setCode} />

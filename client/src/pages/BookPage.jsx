@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Confirmation from "../components/Confirmation.jsx";
-import "./BookPage.css";
+import "../styles/BookPage.scss";
 
 const BookPage = ({ books, setBooks }) => {
     const navigate = useNavigate();
@@ -76,45 +76,56 @@ const BookPage = ({ books, setBooks }) => {
 
     return (
         <div className="book-page">
-            {showConfirmation && (
-                <Confirmation
-                    book={book}
-                    handleDelete={handleDelete}
-                    showConfirmation={showConfirmation}
-                    setShowConfirmation={setShowConfirmation}
-                />
-            )}
             {book && (
                 <div className="book-page-container">
-                    <h2 className="book-page-title capitalize">{book.title}</h2>
-                    <p>
-                        <span>by</span>{" "}
-                        <span className="book-author capitalize">
-                            {book.author}
+                    {showConfirmation && (
+                        <Confirmation
+                            book={book}
+                            handleDelete={handleDelete}
+                            showConfirmation={showConfirmation}
+                            setShowConfirmation={setShowConfirmation}
+                        />
+                    )}
+                    <h1 className="book-page-title capitalize">{book.title}</h1>
+                    <p className="author">
+                        <span>written by</span>{" "}
+                        <span className="capitalize">
+                            <b>{book.author}</b>
                         </span>
                     </p>
-                    <h2 className="book-page-category">{book.category}</h2>
-                    <h2>{book.pages}</h2>
-                    <h2>{book.description}</h2>
-                    <h2>
+                    <p className="book-page-category">{book.category}</p>
+                    <p className="book-page-pages">Pages {book.pages}</p>
+                    <p className="book-page-description">{book.description}</p>
+                    {/* <p>
                         {book.isRead
                             ? "You have already read this book."
                             : "You haven't read this book yet..."}
-                    </h2>
-                    <button onClick={() => setShowPopup(!showPopup)}>
-                        Update
-                    </button>
-                    <button
-                        onClick={() => setShowConfirmation(!showConfirmation)}
-                    >
-                        Delete
-                    </button>
+                    </p> */}
+                    <div className="book-page-buttons">
+                        <button
+                            className="book-page-update-button"
+                            onClick={() => setShowPopup(!showPopup)}
+                        >
+                            Update
+                        </button>
+                        <button
+                            className="book-page-remove-button"
+                            onClick={() =>
+                                setShowConfirmation(!showConfirmation)
+                            }
+                        >
+                            Remove
+                        </button>
+                    </div>
                 </div>
             )}
 
             {showPopup && (
                 <div className="update-container">
                     <form className="update-form" onSubmit={handleUpdate}>
+                        <button onClick={() => setShowPopup(!showPopup)}>
+                            Go Back
+                        </button>
                         <label htmlFor="title">Title</label>
                         <input
                             id="title"
@@ -158,6 +169,7 @@ const BookPage = ({ books, setBooks }) => {
                             value={pages}
                             onChange={(e) => setPages(e.target.value)}
                         />
+                        <label htmlFor="description">Description</label>
                         <textarea
                             name="description"
                             id="description"
@@ -168,9 +180,6 @@ const BookPage = ({ books, setBooks }) => {
                             onChange={(e) => setDescription(e.target.value)}
                         ></textarea>
                         <button>Update</button>
-                        <button onClick={() => setShowPopup(!showPopup)}>
-                            Go Back
-                        </button>
                     </form>
                 </div>
             )}

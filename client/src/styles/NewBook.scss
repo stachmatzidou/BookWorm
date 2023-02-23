@@ -1,0 +1,49 @@
+@import "./Variables.scss";
+
+.new-book {
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.new-book-container {
+    @include form-container;
+    max-width: 50rem;
+}
+
+.scanner-btn,
+.new-book-go-back {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border: none;
+    font-size: 2rem;
+    font-weight: 700;
+    background-color: $greenColor;
+    color: $whiteColor;
+    cursor: pointer;
+}
+
+.scanner-btn:hover,
+.new-book-go-back:hover {
+    background-color: $darkGreenColor;
+}
+
+.new-book-form {
+    @include form;
+
+    textarea {
+        padding: 0.8rem 1rem;
+        border: 2px solid $greenColor;
+        outline: none;
+        color: $darkGreenColor;
+        font-size: 2rem;
+    }
+
+    textarea::placeholder {
+        color: $darkGreenColor;
+        opacity: 0.5;
+    }
+}

@@ -1,0 +1,11 @@
+@import "../styles/Variables.scss";
+
+.footer {
+    min-height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    background-color: $greenColor;
+    color: $whiteColor;
+}

@@ -1,0 +1,90 @@
+@import "./Variables.scss";
+
+.signup,
+.signin {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    font-size: 2rem;
+}
+
+.signup-form-aside,
+.signin-form-aside {
+    width: 50%;
+    height: 100%;
+    background-color: $greenColor;
+}
+
+.signup-form-container,
+.signin-form-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form-container-inner,
+.signin-form-container-inner {
+    @include form-container
+}
+
+.signup-title,
+.signin-title {
+    align-self: center;
+    text-align: center;
+    font-size: 4rem;
+    color: $darkGreenColor;
+}
+
+.signup-form,
+.signin-form {
+    @include form
+}
+
+.go-to-signup,
+.go-to-signin {
+    color: $darkGreenColor;
+}
+
+.go-to-signup a,
+.go-to-signin a {
+    text-decoration: none;
+    color: $pinkColor;
+}
+
+@media only screen and (max-width: 768px) {
+    .signup-form-aside,
+    .signin-form-aside {
+        display: none;
+    }
+    .signup-form-container,
+    .signin-form-container {
+        width: 100%;
+    }
+    .signup-form-container-inner,
+    .signin-form-container-inner {
+        padding: 1rem;
+    }
+    .signup-title,
+    .signin-title {
+        font-size: 3.5rem;
+    }
+    .go-to-signin,
+    .go-to-signup {
+        align-self: center;
+        a {
+            display: block;
+            text-align: center;
+        }
+    }
+};
+
+@media only screen and (max-height: 600px) {
+    .signup-form-container,
+    .signin-form-container,
+    .signup-form-container-inner,
+    .signin-form-container-inner {
+        justify-content: flex-start;
+    }
+}

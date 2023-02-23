@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./Navbar.css";
+import "../styles/Navbar.scss";
 
 const Navbar = ({
     search,
@@ -22,10 +22,13 @@ const Navbar = ({
 
     return (
         <nav className="navbar">
+
+{useParams()["*"] === "home" && (
+
             <div className="navbar-left">
-                {useParams()["*"] === "home" && (
-                    <form action="">
-                        <label htmlFor="search"></label>
+                {/* {useParams()["*"] === "home" && ( */}
+                    <form className="search-form">
+                        <label htmlFor="search">Search</label>
                         <input
                             className="search-books"
                             id="search"
@@ -36,8 +39,14 @@ const Navbar = ({
                             onChange={(e) => setSearch(e.target.value)}
                         />
                     </form>
-                )}
+                {/* )} */}
             </div>
+                            )}
+
+
+
+
+
             <div className="navbar-right">
                 <Link className="page-link" to="/home">
                     Home

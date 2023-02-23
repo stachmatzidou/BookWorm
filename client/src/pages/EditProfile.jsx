@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import "../styles/EditProfile.scss";
 
 const EditProfile = ({ user, setUser }) => {
     const navigate = useNavigate();
@@ -15,27 +16,27 @@ const EditProfile = ({ user, setUser }) => {
         }
     }, [user]);
 
-const updateUserInfo = async (e) => {
-    e.preventDefault();
-    try {
-        const updatedUser = {
-            _id: user._id,
-            username: username,
-            email: email
-        };
-        await axios.patch("/api/users/current", updatedUser);
-        setUser(updatedUser);
-        toast.success("User Updated Successfully!");
-        navigate("/home/profile");
-    } catch (error) {
-        console.log(error);
-        toast.error("Server Error!");
+    const updateUserInfo = async (e) => {
+        e.preventDefault();
+        try {
+            const updatedUser = {
+                _id: user._id,
+                username: username,
+                email: email,
+            };
+            await axios.patch("/api/users/current", updatedUser);
+            setUser(updatedUser);
+            toast.success("User Updated Successfully!");
+            navigate("/home/profile");
+        } catch (error) {
+            console.log(error);
+            toast.error("Server Error!");
+        }
     };
-};
 
     return (
-        <div>
-            <form onSubmit={updateUserInfo}>
+        <div className="profile-info-container">
+            <form className="profile-info-form" onSubmit={updateUserInfo}>
                 <label htmlFor="username">Username</label>
                 <input
                     id="username"
@@ -50,9 +51,10 @@ const updateUserInfo = async (e) => {
                     value={email}
                     onChange={(e) => setUsername(e.target.value)}
                 />
-
-                <Link to="/home/profile">Go Back</Link>
-                <button>Update</button>
+                <div className="profile-info-buttons">
+                    <button type="button" className="profile-go-back" onClick={() => navigate("/home/profile")}>Go Back</button>
+                    <button className="profile-update">Update</button>
+                </div>
             </form>
         </div>
     );

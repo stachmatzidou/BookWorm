@@ -1,0 +1,101 @@
+//Colors
+$whiteColor: #ffffff;
+$lightGreenColor: #639d40;
+$greenColor: #476a31;
+$darkGreenColor: #2b401e;
+$pinkColor: #ff69b4;
+$redColor: #a90000;
+$darkRedColor: #700000;
+
+//Mixins
+@mixin form-container {
+    width: 100%;
+    max-width: 40rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 2rem;
+}
+
+@mixin form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    label {
+        font-size: 2rem;
+        color: $darkGreenColor;
+    }
+
+    input {
+        padding: 0.8rem 1rem;
+        border: 2px solid $greenColor;
+        outline: none;
+        color: $darkGreenColor;
+        font-size: 2rem;
+    }
+
+    input::placeholder {
+        color: $darkGreenColor;
+        opacity: 0.5;
+    }
+
+    button {
+        margin-top: 2rem;
+        padding: 0.8rem 1rem;
+        border: none;
+        font-size: 2rem;
+        font-weight: 700;
+        background-color: $greenColor;
+        color: $whiteColor;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: $darkGreenColor;
+    }
+}
+
+@mixin update-user-container {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: $greenColor;
+}
+
+@mixin update-user-form {
+    width: 100%;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    input {
+        padding: 0.8rem 1rem;
+        border: 2px solid $greenColor;
+        outline: none;
+        color: $darkGreenColor;
+        font-size: 2.2rem;
+    }
+}
+
+@mixin update-user-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin update-user-button {
+    margin-top: 2rem;
+    padding: 0.8rem 1rem;
+    border: none;
+    font-size: 2rem;
+    font-weight: 700;
+    background-color: $greenColor;
+    color: $whiteColor;
+    cursor: pointer;
+}

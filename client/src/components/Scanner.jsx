@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Quagga from "quagga";
-import "./Scanner.css";
 import Beep from "../assets/beep.mp3";
 
 const Scanner = ({

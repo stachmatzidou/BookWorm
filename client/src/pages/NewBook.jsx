@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import "./NewBook.css";
+import "../styles/NewBook.scss";
 import { toast } from "react-hot-toast";
 import BarcodeScanner from "../components/BarcodeScanner.jsx";
 
 const NewBook = ({ books, setBooks }) => {
+    const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [category, setCategory] = useState("");
@@ -134,6 +136,7 @@ const NewBook = ({ books, setBooks }) => {
                         value={pages}
                         onChange={(e) => setPages(e.target.value)}
                     />
+                    <label htmlFor="description">Description</label>
                     <textarea
                         name="description"
                         id="description"
@@ -145,6 +148,7 @@ const NewBook = ({ books, setBooks }) => {
                     ></textarea>
                     <button>Add Book</button>
                 </form>
+                <button className="new-book-go-back" onClick={() => navigate("/home")}>Go Back</button>
             </div>
         </div>
     );

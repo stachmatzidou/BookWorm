@@ -1,0 +1,58 @@
+@import "../styles/Variables.scss";
+
+.header {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+
+.header-left .date {
+    color: $darkGreenColor;
+}
+
+.logo {
+    height: 6rem;
+}
+
+.header-right {
+    position: relative;
+}
+
+.user {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: 700;
+    background-color: $greenColor;
+    color: $whiteColor;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .header-left {
+        display: none;
+    }
+
+    .logo {
+        height: 3.5rem;
+    }
+
+    .user {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .header {
+        padding: 1rem;
+    }
+}

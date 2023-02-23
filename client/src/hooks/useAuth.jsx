@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default () => {
-    // Check whether the logged in 
+    // Check whether user is logged in 
     const [auth, setAuth] = useState();
     const verifyAuth = async () => {
         try {
