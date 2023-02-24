@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/NewBook.scss";
 import { toast } from "react-hot-toast";
@@ -15,14 +15,11 @@ const NewBook = ({ books, setBooks }) => {
     const [showBarcodeScanner, setShowBarcodeScanner] = useState(false);
     const [code, setCode] = useState("");
 
-
     const getScannedData = async () => {
         if (code !== "") {
             const data = await fetch(
                 `https://www.googleapis.com/books/v1/volumes?q=isbn:${code}&key=AIzaSyBcuidu8m83odBufiXPOO-3VE1x4Kpe7OA`
             ).then((response) => response.json());
-
-            console.log(data);
 
             if (data.items) {
                 const title = data.items[0].volumeInfo.title;
@@ -89,10 +86,14 @@ const NewBook = ({ books, setBooks }) => {
                 />
             )}
             <div className="new-book-container">
-                <button className="scanner-btn" onClick={runScanner}>
-                    Scan ISBN Code
-                </button>
                 <form className="new-book-form" onSubmit={addBook}>
+                    <button
+                        className="scanner-btn"
+                        type="button"
+                        onClick={runScanner}
+                    >
+                        Scan ISBN Code
+                    </button>
                     <label htmlFor="title">Title</label>
                     <input
                         id="title"
@@ -147,8 +148,14 @@ const NewBook = ({ books, setBooks }) => {
                         onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
                     <button>Add Book</button>
+                    <button
+                        className="new-book-go-back"
+                        type="button"
+                        onClick={() => navigate("/home")}
+                    >
+                        Go Back
+                    </button>
                 </form>
-                <button className="new-book-go-back" onClick={() => navigate("/home")}>Go Back</button>
             </div>
         </div>
     );

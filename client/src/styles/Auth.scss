@@ -1,45 +1,36 @@
 @import "./Variables.scss";
 
-.signup,
-.signin {
-    width: 100vw;
-    height: 100vh;
+.signup-container,
+.signin-container {
+    width: 100%;
+    min-height: 100%;
     display: flex;
-    font-size: 2rem;
-}
-
-.signup-form-aside,
-.signin-form-aside {
-    width: 50%;
-    height: 100%;
-    background-color: $greenColor;
+    font-size: 2.2rem;
+    background: linear-gradient(to right, $greenColor 50%, $whiteColor 50%);
 }
 
 .signup-form-container,
 .signin-form-container {
     width: 50%;
+    margin-left: auto;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.signup-form-container-inner,
-.signin-form-container-inner {
-    @include form-container
+    gap: 2rem;
 }
 
 .signup-title,
 .signin-title {
-    align-self: center;
     text-align: center;
-    font-size: 4rem;
+    font-size: 5rem;
     color: $darkGreenColor;
 }
 
 .signup-form,
 .signin-form {
-    @include form
+    @include basicForm;
 }
 
 .go-to-signup,
@@ -54,21 +45,18 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .signup-form-aside,
-    .signin-form-aside {
-        display: none;
+    .signup-container,
+    .signin-container {
+        background: $whiteColor;
     }
+
     .signup-form-container,
     .signin-form-container {
         width: 100%;
     }
-    .signup-form-container-inner,
-    .signin-form-container-inner {
-        padding: 1rem;
-    }
     .signup-title,
     .signin-title {
-        font-size: 3.5rem;
+        font-size: 4rem;
     }
     .go-to-signin,
     .go-to-signup {
@@ -78,13 +66,25 @@
             text-align: center;
         }
     }
-};
+}
 
-@media only screen and (max-height: 600px) {
+@media only screen and (max-width: 600px) {
     .signup-form-container,
-    .signin-form-container,
-    .signup-form-container-inner,
-    .signin-form-container-inner {
-        justify-content: flex-start;
+    .signin-form-container {
+        font-size: 2rem;
+    }
+    .signup-title,
+    .signin-title {
+        font-size: 3rem;
+    }
+    .signup-form label,
+    .signup-form input,
+    .signup-form textarea,
+    .signup-form button,
+    .signin-form label,
+    .signin-form input,
+    .signin-form textarea,
+    .signin-form button {
+        font-size: 2rem;
     }
 }

@@ -37,10 +37,10 @@ const SignIn = () => {
         }
     };
     return (
-        <div className="signin">
-            <div className="signin-form-aside"></div>
+        <div className="signin-container">
+            {/* <div className="signin-form-aside"></div> */}
             <div className="signin-form-container">
-                <div className="signin-form-container-inner">
+                {/* <div className="signin-form-container-inner"> */}
                     <h1 className="signin-title">Welcome Back</h1>
                     <form className="signin-form" onSubmit={signIn}>
                         <label htmlFor="email">Email</label>
@@ -64,7 +64,7 @@ const SignIn = () => {
                     <p className="go-to-signup">
                         Don't have an account? <Link to="/signup">Sign Up</Link>
                     </p>
-                </div>
+                {/* </div> */}
             </div>
         </div>
     );

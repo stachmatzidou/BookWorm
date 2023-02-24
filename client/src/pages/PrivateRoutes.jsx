@@ -7,7 +7,7 @@ const PrivateRoutes = () => {
   const { auth } = useAuth();
   if (auth === undefined) return <Spinner />;
   //If user is logged in render the home page otherwise return to authentication page
-  return auth == true ? <Outlet /> : <Navigate to="/signin" />;
+  return auth == true ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default PrivateRoutes;

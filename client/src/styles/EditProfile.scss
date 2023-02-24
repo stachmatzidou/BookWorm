@@ -21,3 +21,12 @@
 .profile-update:hover {
     background-color: $darkGreenColor;
 }
+
+@media only screen and (max-width: 600px) {
+    .profile-info-form label,
+    .profile-info-form input,
+    .profile-go-back,
+    .profile-update {
+        font-size: 2rem;
+    }
+}

@@ -51,10 +51,10 @@ const SignUp = () => {
         }
     };
     return (
-        <div className="signup">
-            <div className="signup-form-aside"></div>
+        <div className="signup-container">
+            {/* <div className="signup-form-aside"></div> */}
             <div className="signup-form-container">
-                <div className="signup-form-container-inner">
+                {/* <div className="signup-form-container-inner"> */}
                     <h1 className="signup-title">Create Account</h1>
                     <form className="signup-form" onSubmit={signUp}>
                         <label htmlFor="username">Username</label>
@@ -97,7 +97,7 @@ const SignUp = () => {
                         <Link to="/signin">Sign In</Link>
                     </p>
                 </div>
-            </div>
+            {/* </div> */}
         </div>
     );
 };

@@ -26,7 +26,6 @@ const Navbar = ({
 {useParams()["*"] === "home" && (
 
             <div className="navbar-left">
-                {/* {useParams()["*"] === "home" && ( */}
                     <form className="search-form">
                         <label htmlFor="search">Search</label>
                         <input
@@ -39,7 +38,6 @@ const Navbar = ({
                             onChange={(e) => setSearch(e.target.value)}
                         />
                     </form>
-                {/* )} */}
             </div>
                             )}
 

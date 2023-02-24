@@ -10,7 +10,7 @@ const HeaderPopup = ({showPopup, setShowPopup}) => {
         try {
             await axios.get("/api/auth/signout");
             toast.success("Signed Out Successfully!");
-            navigate("/signin");
+            navigate("/");
         } catch (error) {
             console.log(error);
             toast.error("Sign Out Failed!");

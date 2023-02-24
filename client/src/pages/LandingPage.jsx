@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../styles/LandingPage.scss";
-import books from "../assets/books2.png";
+import books from "../assets/books.png";
 import useAuth from "../hooks/useAuth.jsx";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -24,13 +24,13 @@ const LandingPage = () => {
                     </p>
                     <p className="landing-text">
                         You can either add books manually or you can
-                        use your web camera as an ISBN scanner to get the
-                        information from Google Books API!
+                        use your web camera to scan each book's ISBN code to get the
+                        information automatically from Google Books API!
                     </p>
 
                     <p className="landing-text">
-                        <Link className="signup-link" to="/signup">
-                            Sign Up
+                        <Link className="signup-link" to="/signin">
+                            Sign In
                         </Link>{" "}
                         to start using it now!
                     </p>
