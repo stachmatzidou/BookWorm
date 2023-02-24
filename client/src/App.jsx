@@ -48,7 +48,7 @@ function App() {
                                 setBooks={setBooks}
                                 searchResults={searchResults}
                                 setSearchResults={setSearchResults}
-                                // isLoading={isLoading}
+                                isLoading={isLoading}
                                 setIsLoading={setIsLoading}
                             />
                         }
@@ -61,7 +61,6 @@ function App() {
                                     setSearchResults={setSearchResults}
                                     books={books}
                                     isLoading={isLoading}
-                                    // setIsLoading={setIsLoading}
                                 />
                             }
                         />

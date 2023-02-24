@@ -14,7 +14,7 @@ const Layout = ({
     setBooks,
     searchResults,
     setSearchResults,
-    // isLoading,
+    isLoading,
     setIsLoading
 }) => {
     const getUserInfo = async () => {
@@ -56,7 +56,7 @@ const Layout = ({
             <main className="main">
                 <Outlet />
             </main>
-            <Footer books={books} />
+            <Footer books={books} isLoading={isLoading} />
         </div>
     );
 };
