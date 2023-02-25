@@ -10,10 +10,18 @@ const BarcodeScanner = ({
 }) => {
     return (
         <div className="barcode-scanner">
-            <button className="go-back" onClick={() => setShowBarcodeScanner(!showBarcodeScanner)} >
+            <button
+                className="go-back"
+                onClick={() => setShowBarcodeScanner(!showBarcodeScanner)}
+            >
                 Go Back
             </button>
-            <Scanner showBarcodeScanner={showBarcodeScanner} setShowBarcodeScanner={setShowBarcodeScanner} code={code} setCode={setCode} />
+            <Scanner
+                showBarcodeScanner={showBarcodeScanner}
+                setShowBarcodeScanner={setShowBarcodeScanner}
+                code={code}
+                setCode={setCode}
+            />
         </div>
     );
 };

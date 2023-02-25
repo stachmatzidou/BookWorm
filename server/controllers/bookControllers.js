@@ -25,6 +25,7 @@ export const getOneBook = async (req, res, next) => {
 export const createBook = async (req, res, next) => {
     try {
         const newBook = new Book({
+            cover: req.body.cover,
             title: req.body.title,
             author: req.body.author,
             category: req.body.category,
@@ -48,6 +49,7 @@ export const updateBook = async (req, res, next) => {
         if (book.user.toString() !== req.user.id) return next(createError({status: 401, message: "This is not your book."}));
         //find book by id and update it
         const updatedBook = await Book.findByIdAndUpdate(req.params.id, {
+            cover: req.body.cover,
             title: req.body.title,
             author: req.body.author,
             category: req.body.category,

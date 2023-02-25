@@ -7,6 +7,7 @@ import BarcodeScanner from "../components/BarcodeScanner.jsx";
 
 const NewBook = ({ books, setBooks }) => {
     const navigate = useNavigate();
+    const [cover, setCover] = useState("");
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [category, setCategory] = useState("");
@@ -22,12 +23,17 @@ const NewBook = ({ books, setBooks }) => {
             ).then((response) => response.json());
 
             if (data.items) {
-                const title = data.items[0].volumeInfo.title;
-                const author = data.items[0].volumeInfo.authors;
-                const category = data.items[0].volumeInfo.categories;
-                const pages = data.items[0].volumeInfo.pageCount;
-                const description = data.items[0].volumeInfo.description;
+                const bookInfo = data.items[0].volumeInfo;
 
+                const cover = bookInfo.imageLinks.thumbnail;
+                console.log(cover);
+                const title = bookInfo.title;
+                const author = bookInfo.authors;
+                const category = bookInfo.categories;
+                const pages = bookInfo.pageCount;
+                const description = bookInfo.description;
+
+                cover ? setCover(cover) : setCover("");
                 title ? setTitle(title) : setTitle("");
                 author ? setAuthor(author[0]) : setAuthor("");
                 category ? setCategory(category[0]) : setCategory("");
@@ -53,6 +59,7 @@ const NewBook = ({ books, setBooks }) => {
         try {
             //create an object with those values
             const { data } = await axios.post("/api/books", {
+                cover: cover,
                 title: title,
                 author: author,
                 category: category,
@@ -64,6 +71,7 @@ const NewBook = ({ books, setBooks }) => {
 
             setTitle("");
             setAuthor("");
+            setCover("");
             setCategory("");
             setPages("");
             setDescription("");
@@ -114,6 +122,17 @@ const NewBook = ({ books, setBooks }) => {
                         required
                         value={author}
                         onChange={(e) => setAuthor(e.target.value)}
+                    />
+
+                    <label htmlFor="author">Cover Url</label>
+                    <input
+                        id="cover"
+                        name="cover"
+                        type="text"
+                        placeholder="Cover Url"
+                        required
+                        value={cover}
+                        onChange={(e) => setCover(e.target.value)}
                     />
 
                     <label htmlFor="category">Category</label>

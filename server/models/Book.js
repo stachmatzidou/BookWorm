@@ -5,6 +5,10 @@ import mongoose, {Schema} from "mongoose";
 
 //create book Schema
 const bookSchema = new Schema({
+    cover: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,

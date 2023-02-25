@@ -11,6 +11,7 @@ const BookPage = ({ books, setBooks }) => {
     const [book, setBook] = useState({});
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
+    const [cover, setCover] = useState("");
     const [category, setCategory] = useState("");
     const [pages, setPages] = useState("");
     const [description, setDescription] = useState("");
@@ -24,6 +25,7 @@ const BookPage = ({ books, setBooks }) => {
     useEffect(() => {
         setTitle(book.title);
         setAuthor(book.author);
+        setCover(book.cover);
         setCategory(book.category);
         setPages(book.pages);
         setDescription(book.description);
@@ -55,6 +57,7 @@ const BookPage = ({ books, setBooks }) => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         const updatedPost = {
+            cover: cover,
             title: title,
             author: author,
             category: category,
@@ -123,7 +126,7 @@ const BookPage = ({ books, setBooks }) => {
             {showPopup && (
                 <div className="update-container">
                     <form className="update-form" onSubmit={handleUpdate}>
-                        <button onClick={() => setShowPopup(!showPopup)}>
+                        <button type="button" onClick={() => setShowPopup(!showPopup)}>
                             Go Back
                         </button>
                         <label htmlFor="title">Title</label>
@@ -146,6 +149,17 @@ const BookPage = ({ books, setBooks }) => {
                             required
                             value={author}
                             onChange={(e) => setAuthor(e.target.value)}
+                        />
+
+                        <label htmlFor="author">Cover</label>
+                        <input
+                            id="cover"
+                            name="cover"
+                            type="text"
+                            placeholder="Cover"
+                            required
+                            value={cover}
+                            onChange={(e) => setCover(e.target.value)}
                         />
 
                         <label htmlFor="category">Category</label>
