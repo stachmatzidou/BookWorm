@@ -20,7 +20,7 @@ const Home = ({
 
     return (
         <div className="home">
-            {!isLoading && elements.length ? elements : <p className="no-books">No books to display</p>}
+            {!isLoading && elements.length ? elements : <div className="no-books">No books to display</div>}
         </div>
     );
 };

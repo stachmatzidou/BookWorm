@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/About.scss";
 import book from "../assets/book.png";
-import trust from "../assets/in-books-we-trust2.png";
+import trust from "../assets/in-books-we-trust.png";
 
 const About = () => {
     return (

@@ -76,7 +76,6 @@ const BookPage = ({ books, setBooks }) => {
             toast.error("Server Error!");
         }
     };
-
     return (
         <div className="book-page">
             {book && (
@@ -89,36 +88,43 @@ const BookPage = ({ books, setBooks }) => {
                             setShowConfirmation={setShowConfirmation}
                         />
                     )}
-                    <h1 className="book-page-title capitalize">{book.title}</h1>
-                    <p className="author">
-                        <span>written by</span>{" "}
-                        <span className="capitalize">
-                            <b>{book.author}</b>
-                        </span>
-                    </p>
-                    <p className="book-page-category">{book.category}</p>
-                    <p className="book-page-pages">Pages {book.pages}</p>
-                    <p className="book-page-description">{book.description}</p>
-                    {/* <p>
-                        {book.isRead
-                            ? "You have already read this book."
-                            : "You haven't read this book yet..."}
-                    </p> */}
-                    <div className="book-page-buttons">
-                        <button
-                            className="book-page-update-button"
-                            onClick={() => setShowPopup(!showPopup)}
-                        >
-                            Update
-                        </button>
-                        <button
-                            className="book-page-remove-button"
-                            onClick={() =>
-                                setShowConfirmation(!showConfirmation)
-                            }
-                        >
-                            Remove
-                        </button>
+                    <div className="book-page-image-container">
+                        <img src={book.cover} alt="" />
+                    </div>
+                    <div className="book-page-info">
+                        <h1 className="book-page-title capitalize">
+                            {book.title}
+                        </h1>
+                        <p className="author">
+                            <span>written by</span>{" "}
+                            <span className="capitalize">
+                                <b>{book.author}</b>
+                            </span>
+                        </p>
+                        <p className="book-page-category">Category: {book.category}</p>
+                        <p className="book-page-pages">Pages: {book.pages}</p>
+                    </div>
+                    <div className="book-page-description">
+                        <h1 className="description-title">Description</h1>
+                        <p className="description-text">
+                            {book.description}
+                        </p>
+                        <div className="book-page-buttons">
+                            <button
+                                className="book-page-update-button"
+                                onClick={() => setShowPopup(!showPopup)}
+                            >
+                                Update
+                            </button>
+                            <button
+                                className="book-page-remove-button"
+                                onClick={() =>
+                                    setShowConfirmation(!showConfirmation)
+                                }
+                            >
+                                Remove
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
@@ -126,7 +132,10 @@ const BookPage = ({ books, setBooks }) => {
             {showPopup && (
                 <div className="update-container">
                     <form className="update-form" onSubmit={handleUpdate}>
-                        <button type="button" onClick={() => setShowPopup(!showPopup)}>
+                        <button
+                            type="button"
+                            onClick={() => setShowPopup(!showPopup)}
+                        >
                             Go Back
                         </button>
                         <label htmlFor="title">Title</label>
