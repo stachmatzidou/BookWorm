@@ -1,15 +1,15 @@
 import express from "express";
-// import dotenv from "dotenv";
-// dotenv.config();
 import "dotenv/config";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import allRoutes from "./routes/routes.js";
 import mongoose from "mongoose";
-import error from "./utils/createError.js";
+import path, {dirname} from "path";
+import { fileURLToPath } from "url";
 import "colors";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 //create port
 const PORT = process.env.PORT || 8000;
 //initialize express
@@ -33,10 +33,10 @@ app.use((error, req, res, next) => {
 });
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("../client/dist"));
+    app.use(express.static(path.resolve(__dirname, "../client/dist")));
 
     app.get("*", (req, res) => {
-        res.sendFile(path.resolve("../client", "dist", "index.html"));
+        res.sendFile(path.resolve(__dirname,"../client", "dist", "index.html"));
     });
 }
 
