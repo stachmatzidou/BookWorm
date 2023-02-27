@@ -19,7 +19,7 @@ const NewBook = ({ books, setBooks }) => {
     const getScannedData = async () => {
         if (code !== "") {
             const data = await fetch(
-                `https://www.googleapis.com/books/v1/volumes?q=isbn:${code}&key=AIzaSyBcuidu8m83odBufiXPOO-3VE1x4Kpe7OA`
+                `https://www.googleapis.com/books/v1/volumes?q=isbn:${code}&key=${process.env.API_KEY}`
             ).then((response) => response.json());
 
             if (data.items) {
