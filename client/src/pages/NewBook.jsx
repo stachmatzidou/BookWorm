@@ -26,7 +26,6 @@ const NewBook = ({ books, setBooks }) => {
                 const bookInfo = data.items[0].volumeInfo;
 
                 const cover = bookInfo.imageLinks.thumbnail;
-                console.log(cover);
                 const title = bookInfo.title;
                 const author = bookInfo.authors;
                 const category = bookInfo.categories;
