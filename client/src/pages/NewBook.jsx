@@ -16,10 +16,14 @@ const NewBook = ({ books, setBooks }) => {
     const [showBarcodeScanner, setShowBarcodeScanner] = useState(false);
     const [code, setCode] = useState("");
 
+    // const key = JSON.stringify(import.meta.env.VITE_API_KEY);
+
     const getScannedData = async () => {
+        const key = import.meta.env.VITE_API_KEY;
+
         if (code !== "") {
             const data = await fetch(
-                `https://www.googleapis.com/books/v1/volumes?q=isbn:${code}&key=${process.env.API_KEY}`
+                `https://www.googleapis.com/books/v1/volumes?q=isbn:${code}&key=${key}`
             ).then((response) => response.json());
 
             if (data.items) {
