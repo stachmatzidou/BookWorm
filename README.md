@@ -7,7 +7,7 @@ The user can enter book information manually or use the integrated ISBN scanner 
 
 The app uses the [Google Books API](https://developers.google.com/books) to get the book information whenever the user scans a book's ISBN code.
 
-[#DEMO](https://bookworm-137r.onrender.com/)
+[# DEMO](https://bookworm-137r.onrender.com/)
 
 ## Installation
 To get the project on your computer follow the following steps:
