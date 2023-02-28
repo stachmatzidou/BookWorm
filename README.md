@@ -1,8 +1,10 @@
 # BookWorm
 
 <!-- ## Overview -->
-An application created by a book lover (aka a bookworm), so that all book lovers can keep track of their private libraries in a fun and easy manner
-It was created using the MERN stack: React for the FrontEnd, Node.js & Express.js for the BackEnd and MongoDB for the database
+An application created by a book lover (aka a bookworm), so that all book lovers can keep track of their private libraries in a fun and easy manner.
+It was created using the MERN stack: React for the FrontEnd, Node.js & Express.js for the BackEnd and MongoDB for the database.
+
+The app uses the [Google Books API](https://developers.google.com/books) to fetch information whenever the user uses the scanner to scan the book's ISBN code.
 
 <!-- ## Description -->
 
