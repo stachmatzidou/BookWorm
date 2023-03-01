@@ -31,4 +31,3 @@ Create a .env file and fill in the following properties with your preferences.
 9. Cd back to the server folder and type `npm start` to run the server
 10. Cd back to the client folder and type `npm run dev`
 11. Press ctrl and click on the link in the terminal to open the application on the browser
-12. 
