@@ -1,5 +1,17 @@
 @import "./Variables.scss";
 
+.instructions {
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-style: italic;
+    background-color: $greenColor;
+    color: $whiteColor;
+}
+
+.hide {
+    display: none;
+}
+
 .signup-container,
 .signin-container {
     width: 100%;
@@ -31,6 +43,37 @@
 .signup-form,
 .signin-form {
     @include basicForm;
+}
+
+.signup-form {
+    .input-container {
+        position: relative;
+    }
+    .svg-container {
+        height: calc(100% - 0.4rem);
+        width: 3rem;
+        position: absolute;
+        top: 0.2rem;
+        right: 0.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $whiteColor;
+    }
+    .svg-container svg {
+        padding: 0 0.5rem;
+        z-index: 10;
+    }
+    .valid {
+        color: $greenColor;
+    }
+    .invalid {
+        color: $redColor;
+    }
+    input {
+        width: 100%;
+        padding-right: 3rem; 
+    }
 }
 
 .go-to-signup,
