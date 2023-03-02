@@ -9,13 +9,16 @@ const EditPassword = () => {
 
     const updatePassword = async (e) => {
         e.preventDefault();
+        const currentPassword = e.target.current.value;
         const password = e.target.password.value;
         const confirmPassword = e.target.confirm.value;
+        
         if (password !== confirmPassword) {
             return toast.error("Passwords do not match!");
         } else {
             try {
                 const updatedUser = {
+                    current: currentPassword,
                     password: password
                 };
                 await axios.patch("/api/users/current", updatedUser);
@@ -31,10 +34,15 @@ const EditPassword = () => {
     return (
         <div className="update-password-container">
             <form className="update-password-form" onSubmit={updatePassword}>
+                <label htmlFor="current">Current Password</label>
+                <input id="current" name="current" type="password" required />
+
                 <label htmlFor="password">New Password</label>
                 <input id="password" name="password" type="password" required />
+
                 <label htmlFor="confirm">Confirm New Password</label>
                 <input id="confirm" name="confirm" type="password" required />
+
                 <div className="update-password-buttons">
                     <button type="button" className="update-password-go-back" onClick={() => navigate("/home/profile")}>Go Back</button>
                     <button className="update-password-update">Update</button>

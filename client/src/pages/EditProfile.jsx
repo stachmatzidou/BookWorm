@@ -49,7 +49,7 @@ const EditProfile = ({ user, setUser }) => {
                     id="email"
                     type="text"
                     value={email}
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <div className="profile-info-buttons">
                     <button type="button" className="profile-go-back" onClick={() => navigate("/home/profile")}>Go Back</button>

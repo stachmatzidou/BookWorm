@@ -202,6 +202,7 @@ const SignUp = () => {
                             name="password"
                             type="password"
                             placeholder="Password"
+                            autoComplete="on"
                             value={password}
                             required
                             onChange={(e) => setPassword(e.target.value)}
@@ -243,6 +244,7 @@ const SignUp = () => {
                             id="confirm"
                             name="confirm"
                             type="password"
+                            autoComplete="on"
                             placeholder="Confirm Password"
                             value={confirm}
                             required
