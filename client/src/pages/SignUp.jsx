@@ -38,9 +38,6 @@ const SignUp = () => {
     const [validConfirm, setValidConfirm] = useState(false);
     const [confirmFocus, setConfirmFocus] = useState(false);
 
-    const [errorMessage, setErrorMessage] = useState("");
-    const [success, setSuccess] = useState(false);
-
     const user_Regex = /^[A-z][A-z0-9-_]{3,23}$/;
     const email_Regex = /^\w+([\.\-\_]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const password_Regex =
@@ -71,11 +68,6 @@ const SignUp = () => {
         setValidConfirm(match);
     }, [password, confirm]);
 
-    // //useEffect for the error message
-    // useEffect(() => {
-    //     setErrorMessage("");
-    // }, [username, email, password, confirm]);
-
     const signUp = async (e) => {
         //prevent form default behavior
         e.preventDefault();
@@ -83,7 +75,7 @@ const SignUp = () => {
         if (!validUsername) return toast.error("Invalid Username!");
         if (!validEmail) return toast.error("Invalid Email!");
         if (!validPassword) return toast.error("Invalid Password");
-        if (password !== confirm) return toast.error("Passwords do not match!");
+        if (!validConfirm) return toast.error("Passwords do not match!");
 
         //store the necessary input values in an object
         const user = {
