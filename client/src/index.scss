@@ -1,5 +1,9 @@
+@import "./styles/Variables.scss";
+
 html {
     font-size: 10px;
+    scrollbar-color: $greenColor $whiteColor;
+    scrollbar-width: thin;
 }
 
 body {

@@ -15,7 +15,7 @@ const Layout = ({
     searchResults,
     setSearchResults,
     isLoading,
-    setIsLoading
+    setIsLoading,
 }) => {
     const getUserInfo = async () => {
         try {

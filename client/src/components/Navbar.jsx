@@ -8,7 +8,7 @@ const Navbar = ({
     books,
     setBooks,
     searchResults,
-    setSearchResults,
+    setSearchResults
 }) => {
     useEffect(() => {
         const filteredResult = books.filter((book) => {
@@ -22,10 +22,8 @@ const Navbar = ({
 
     return (
         <nav className="navbar">
-
-{useParams()["*"] === "home" && (
-
-            <div className="navbar-left">
+            {useParams()["*"] === "home" && (
+                <div className="navbar-left">
                     <form className="search-form">
                         <label htmlFor="search">Search</label>
                         <input
@@ -38,12 +36,8 @@ const Navbar = ({
                             onChange={(e) => setSearch(e.target.value)}
                         />
                     </form>
-            </div>
-                            )}
-
-
-
-
+                </div>
+            )}
 
             <div className="navbar-right">
                 <Link className="page-link" to="/home">

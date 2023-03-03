@@ -1,12 +1,23 @@
 @import "../styles/Variables.scss";
 
 .header {
+    width: 100%;
     padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 2rem;
+    // position: fixed;
+    background-color: $whiteColor;
+    z-index: 10;
 }
+
+// .header__hide {
+//     // display: none;
+//     visibility: hidden;
+//     transition: all .5s;
+//     transform: translateY(-100%);
+// }
 
 .header-left .date {
     color: $darkGreenColor;
@@ -34,6 +45,7 @@
     background-color: $greenColor;
     color: $whiteColor;
     cursor: pointer;
+    z-index: 10;
 }
 
 @media only screen and (max-width: 768px) {

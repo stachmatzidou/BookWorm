@@ -15,7 +15,8 @@
 .signup-container,
 .signin-container {
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     font-size: 2.2rem;
     background: linear-gradient(to right, $greenColor 50%, $whiteColor 50%);
