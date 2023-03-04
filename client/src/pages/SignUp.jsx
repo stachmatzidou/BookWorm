@@ -206,7 +206,7 @@ const SignUp = () => {
                             onBlur={() => setPasswordFocus(false)}
                         />
                         <div className="svg-container-multiple">
-                            {icon}
+                                {icon}
                             <FontAwesomeIcon
                                 icon={faCheck}
                                 className={validPassword ? "valid" : "hide"}
@@ -238,7 +238,6 @@ const SignUp = () => {
                     <label htmlFor="confirm">Confirm Password</label>
                     <div className="input-container">
                         <input
-                            // className="smaller"
                             id="confirm"
                             name="confirm"
                             type="password"
@@ -250,8 +249,7 @@ const SignUp = () => {
                             onFocus={() => setConfirmFocus(true)}
                             onBlur={() => setConfirmFocus(false)}
                         />
-                        <div className="svg-container-multiple">
-                            {/* {icon} */}
+                        <div className="svg-container">
                             <FontAwesomeIcon
                                 icon={faCheck}
                                 className={
