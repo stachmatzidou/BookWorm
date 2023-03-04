@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth.jsx";
+import usePasswordVisibilityToggle from "../hooks/usePasswordVisibilityToggle.jsx";
 import {
     faCheck,
     faTimes,
@@ -14,14 +15,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const SignUp = () => {
     const navigate = useNavigate();
     const { auth } = useAuth();
-    //Check the Auth every time auth and navigate are updated
-    useEffect(() => {
-        if (auth) {
-            navigate("/home");
-        }
-    }, [auth, navigate]);
-
+    const [inputType, icon] = usePasswordVisibilityToggle();
     const usernameRef = useRef();
+
     const [username, setUsername] = useState("");
     const [validUsername, setValidUsername] = useState(false);
     const [usernameFocus, setUsernameFocus] = useState(false);
@@ -42,6 +38,13 @@ const SignUp = () => {
     const email_Regex = /^\w+([\.\-\_]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const password_Regex =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,23}$/;
+
+    //Check the Auth every time auth and navigate are updated
+    useEffect(() => {
+        if (auth) {
+            navigate("/home");
+        }
+    }, [auth, navigate]);
 
     //useEffect to focus the username input on page render
     useEffect(() => {
@@ -190,9 +193,10 @@ const SignUp = () => {
                     <label htmlFor="password">Password</label>
                     <div className="input-container">
                         <input
+                            className="smaller"
                             id="password"
                             name="password"
-                            type="password"
+                            type={inputType}
                             placeholder="Password"
                             autoComplete="on"
                             value={password}
@@ -201,7 +205,8 @@ const SignUp = () => {
                             onFocus={() => setPasswordFocus(true)}
                             onBlur={() => setPasswordFocus(false)}
                         />
-                        <div className="svg-container">
+                        <div className="svg-container-multiple">
+                            {icon}
                             <FontAwesomeIcon
                                 icon={faCheck}
                                 className={validPassword ? "valid" : "hide"}
@@ -233,6 +238,7 @@ const SignUp = () => {
                     <label htmlFor="confirm">Confirm Password</label>
                     <div className="input-container">
                         <input
+                            // className="smaller"
                             id="confirm"
                             name="confirm"
                             type="password"
@@ -244,7 +250,8 @@ const SignUp = () => {
                             onFocus={() => setConfirmFocus(true)}
                             onBlur={() => setConfirmFocus(false)}
                         />
-                        <div className="svg-container">
+                        <div className="svg-container-multiple">
+                            {/* {icon} */}
                             <FontAwesomeIcon
                                 icon={faCheck}
                                 className={

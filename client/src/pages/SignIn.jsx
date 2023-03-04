@@ -4,8 +4,10 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth.jsx";
 import { toast } from "react-hot-toast";
+import usePasswordVisibilityToggle from "../hooks/usePasswordVisibilityToggle.jsx";
 
 const SignIn = () => {
+    const [inputType, icon] = usePasswordVisibilityToggle();
 
     const navigate = useNavigate();
     const { auth } = useAuth();
@@ -15,7 +17,7 @@ const SignIn = () => {
             navigate("/home");
         }
     }, [auth, navigate]);
-    
+
     const signIn = async (e) => {
         //prevent form default behavior
         e.preventDefault();
@@ -38,33 +40,35 @@ const SignIn = () => {
     };
     return (
         <div className="signin-container">
-            {/* <div className="signin-form-aside"></div> */}
             <div className="signin-form-container">
-                {/* <div className="signin-form-container-inner"> */}
-                    <h1 className="signin-title">Welcome Back</h1>
-                    <form className="signin-form" onSubmit={signIn}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="Email"
-                            required
-                        />
-                        <label htmlFor="password">Password</label>
+                <h1 className="signin-title">Welcome Back</h1>
+                <form className="signin-form" onSubmit={signIn}>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="Email"
+                        required
+                    />
+                    <label htmlFor="password">Password</label>
+                    <div className="input-container">
                         <input
                             id="password"
                             name="password"
-                            type="password"
+                            type={inputType}
                             placeholder="Password"
                             required
                         />
-                        <button className="signin-btn">Sign In</button>
-                    </form>
-                    <p className="go-to-signup">
-                        Don't have an account? <Link to="/signup">Sign Up</Link>
-                    </p>
-                {/* </div> */}
+                        <div className="svg-container">
+                            {icon}
+                        </div>
+                    </div>
+                    <button className="signin-btn">Sign In</button>
+                </form>
+                <p className="go-to-signup">
+                    Don't have an account? <Link to="/signup">Sign Up</Link>
+                </p>
             </div>
         </div>
     );

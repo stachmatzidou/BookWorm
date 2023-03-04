@@ -9,9 +9,11 @@ import {
     faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import usePasswordVisibilityToggle from "../hooks/usePasswordVisibilityToggle.jsx";
 
 const EditPassword = () => {
     const navigate = useNavigate();
+    const [inputType, icon] = usePasswordVisibilityToggle();
     const [currentPassword, setCurrentPassword] = useState("");
     const [password, setPassword] = useState("");
     const [validPassword, setValidPassword] = useState(false);
@@ -52,17 +54,22 @@ const EditPassword = () => {
         <div className="update-password-container">
             <form className="update-password-form" onSubmit={updatePassword}>
                 <label htmlFor="current">Current Password</label>
-                <input
-                    id="current"
-                    name="current"
-                    type="password"
-                    placeholder="Current Password"
-                    required
-                    value={currentPassword}
-                    onChange={(e) => {
-                        setCurrentPassword(e.target.value);
-                    }}
-                />
+                <div className="input-container">
+                    <input
+                        id="current"
+                        name="current"
+                        type={inputType}
+                        placeholder="Current Password"
+                        required
+                        value={currentPassword}
+                        onChange={(e) => {
+                            setCurrentPassword(e.target.value);
+                        }}
+                    />
+                    <div className="svg-container">
+                        {icon}
+                    </div>
+                </div>
                 <label htmlFor="password">New Password</label>
                 <div className="input-container">
                     <input
