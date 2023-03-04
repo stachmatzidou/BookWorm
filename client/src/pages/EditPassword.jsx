@@ -54,11 +54,10 @@ const EditPassword = () => {
         <div className="update-password-container">
             <form className="update-password-form" onSubmit={updatePassword}>
                 <label htmlFor="current">Current Password</label>
-                <div className="input-container">
                     <input
                         id="current"
                         name="current"
-                        type={inputType}
+                        type="password"
                         placeholder="Current Password"
                         required
                         value={currentPassword}
@@ -66,16 +65,12 @@ const EditPassword = () => {
                             setCurrentPassword(e.target.value);
                         }}
                     />
-                    <div className="svg-container">
-                        {icon}
-                    </div>
-                </div>
                 <label htmlFor="password">New Password</label>
                 <div className="input-container">
-                    <input
+                    <input className="smaller"
                         id="password"
                         name="password"
-                        type="password"
+                        type={inputType}
                         placeholder="Password"
                         autoComplete="on"
                         value={password}
@@ -84,7 +79,8 @@ const EditPassword = () => {
                         onFocus={() => setPasswordFocus(true)}
                         onBlur={() => setPasswordFocus(false)}
                     />
-                    <div className="svg-container">
+                    <div className="svg-container-multiple">
+                        {icon}
                         <FontAwesomeIcon
                             icon={faCheck}
                             className={validPassword ? "valid" : "hide"}
