@@ -214,6 +214,8 @@
 
 .update-form {
     @include basicForm;
+    .update-container-update-button {
+    }
 }
 
 @media only screen and (max-width: 600px) {
