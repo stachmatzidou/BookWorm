@@ -1,0 +1,23 @@
+@import "./Variables.scss";
+
+.update-container {
+    width: 100%;
+    min-height: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.update-form {
+    @include basicForm;
+}
+
+// @media only screen and (max-width: 600px) {
+//     .update-form label,
+//     .update-form input,
+//     .update-form textarea,
+//     .update-form button {
+//         font-size: 2rem;
+//     }
+// }

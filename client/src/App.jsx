@@ -15,6 +15,7 @@ import Error from "./pages/Error.jsx";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import EditProfile from "./pages/EditProfile";
 import EditPassword from "./pages/EditPassword.jsx";
+import EditBookPage from "./pages/EditBookPage.jsx";
 
 function App() {
     const [user, setUser] = useState(null);
@@ -78,6 +79,15 @@ function App() {
                                 path=":id"
                                 element={
                                     <BookPage
+                                        books={books}
+                                        setBooks={setBooks}
+                                    />
+                                }
+                            />
+                            <Route
+                                path="edit/:id"
+                                element={
+                                    <EditBookPage
                                         books={books}
                                         setBooks={setBooks}
                                     />
