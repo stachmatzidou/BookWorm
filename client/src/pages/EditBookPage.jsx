@@ -15,8 +15,6 @@ const EditBookPage = ({ books, setBooks }) => {
     const [pages, setPages] = useState("");
     const [description, setDescription] = useState("");
 
-    console.log(book);
-
     useEffect(() => {
         if (book) {
             setTitle(book.title);
