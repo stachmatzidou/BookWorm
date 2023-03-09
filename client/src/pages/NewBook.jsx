@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import noImage from "../assets/no-image.jpg";
 import "../styles/NewBook.scss";
 import { toast } from "react-hot-toast";
 import BarcodeScanner from "../components/BarcodeScanner.jsx";
@@ -16,8 +17,6 @@ const NewBook = ({ books, setBooks }) => {
     const [showBarcodeScanner, setShowBarcodeScanner] = useState(false);
     const [code, setCode] = useState("");
 
-    // const key = JSON.stringify(import.meta.env.VITE_API_KEY);
-
     const getScannedData = async () => {
         const key = import.meta.env.VITE_API_KEY;
 
@@ -28,20 +27,19 @@ const NewBook = ({ books, setBooks }) => {
 
             if (data.items) {
                 const bookInfo = data.items[0].volumeInfo;
-
-                const cover = bookInfo.imageLinks.thumbnail;
+                const cover = bookInfo.imageLinks?.thumbnail;
                 const title = bookInfo.title;
                 const author = bookInfo.authors;
                 const category = bookInfo.categories;
                 const pages = bookInfo.pageCount;
                 const description = bookInfo.description;
 
-                cover ? setCover(cover) : setCover("");
-                title ? setTitle(title) : setTitle("");
-                author ? setAuthor(author[0]) : setAuthor("");
-                category ? setCategory(category[0]) : setCategory("");
-                pages ? setPages(pages) : setPages("");
-                description ? setDescription(description) : setDescription("");
+                cover ? setCover(cover) : setCover(noImage);
+                title ? setTitle(title) : setTitle("Book Title Not Available");
+                author ? setAuthor(author[0]) : setAuthor("Unavailable");
+                category ? setCategory(category[0]) : setCategory("Book Category Not Available");
+                pages ? setPages(pages) : setPages("Number of Book Pages Not Available");
+                description ? setDescription(description) : setDescription("Book Description Not Available");
             } else {
                 toast.error("Book not Found!");
             }
@@ -55,6 +53,12 @@ const NewBook = ({ books, setBooks }) => {
 
     const runScanner = () => {
         setShowBarcodeScanner(!showBarcodeScanner);
+        setTitle("");
+        setAuthor("");
+        setCover("");
+        setCategory("");
+        setPages("");
+        setDescription("");
     };
 
     const addBook = async (e) => {
