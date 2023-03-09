@@ -42,6 +42,7 @@ const EditBookPage = ({ books, setBooks }) => {
                 books.map((book) => (book._id === id ? { ...data } : book))
             );
             toast.success("Book Updated Successfully!");
+            navigate(`../${id}`);
         } catch (error) {
             console.log(error);
             toast.error("Server Error!");
