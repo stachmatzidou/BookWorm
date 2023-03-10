@@ -6,7 +6,12 @@ import createError from "../utils/createError.js";
 export const signUp = async (req, res, next) => {
     //checking if all required information is available
     if (!(req.body.username && req.body.email && req.body.password)) {
-        return next(createError({status: 400, message: "Fields username, email and password are required!"}));
+        return next(
+            createError({
+                status: 400,
+                message: "Fields username, email and password are required!",
+            })
+        );
     }
     //if all info is there
     try {
@@ -21,7 +26,31 @@ export const signUp = async (req, res, next) => {
         });
         //saving the created user to the database
         await newUser.save();
-        return res.status(201).json("New User Created.");
+
+        //find the user using email and get the user id
+        const user = await User.findOne({ email: req.body.email }).select(
+            "_id"
+        );
+        //if no user is found
+        if (!user) {
+            return next(
+                createError({ status: 404, message: "No user found." })
+            );
+        }
+        //We create the payload
+        const payload = {
+            id: user._id,
+            username: user.username,
+        };
+        //then we create the token
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: "1d",
+        });
+        //store the token in a cookie
+        return res
+            .cookie("access_token", token, { httpOnly: true })
+            .status(200)
+            .json({ message: "New User Created." });
     } catch (error) {
         console.log(error);
         return next(error);
@@ -31,15 +60,24 @@ export const signUp = async (req, res, next) => {
 export const signIn = async (req, res, next) => {
     //check if email and password are available
     if (!(req.body.email && req.body.password)) {
-        return next(createError({status: 400, message: "Fields email and password are required!"}));
+        return next(
+            createError({
+                status: 400,
+                message: "Fields email and password are required!",
+            })
+        );
     }
     //if they are available
     try {
         //find the user using email and get username, email and password
-        const user = await User.findOne({ email: req.body.email }).select("username email password");
+        const user = await User.findOne({ email: req.body.email }).select(
+            "username email password"
+        );
         //if no user is found
         if (!user) {
-            return next(createError({status: 404, message: "No user found."}));
+            return next(
+                createError({ status: 404, message: "No user found." })
+            );
         }
         //if user exists check if password is correct
         const isPasswordCorrect = await bcryptjs.compare(
@@ -48,7 +86,9 @@ export const signIn = async (req, res, next) => {
         );
         //if password is incorrect
         if (!isPasswordCorrect) {
-            return next(createError({status: 400, message: "Incorrect Password."}));
+            return next(
+                createError({ status: 400, message: "Incorrect Password." })
+            );
         }
         //if password is correct we create the payload
         const payload = {
@@ -60,17 +100,20 @@ export const signIn = async (req, res, next) => {
             expiresIn: "1d",
         });
         //store the token in a cookie
-        return res.cookie("access_token", token, { httpOnly: true }).status(200).json({message: "Signed in Successfully!"});
+        return res
+            .cookie("access_token", token, { httpOnly: true })
+            .status(200)
+            .json({ message: "Signed in Successfully!" });
     } catch (error) {
         console.log(error);
         return next(error);
-    };
+    }
 };
 
 export const signOut = (req, res) => {
     //Clearing the cookie when user signs out
     res.clearCookie("access_token");
-    return res.status(200).json({message: "Signed out Successfully."});
+    return res.status(200).json({ message: "Signed out Successfully." });
 };
 
 export const status = (req, res) => {
@@ -79,11 +122,11 @@ export const status = (req, res) => {
     //if there is no token set status to false
     if (!token) {
         return res.json(false);
-    };
+    }
     return jwt.verify(token, process.env.JWT_SECRET, (error) => {
         if (error) {
             return res.json(false);
-        };
+        }
         return res.json(true);
     });
 };

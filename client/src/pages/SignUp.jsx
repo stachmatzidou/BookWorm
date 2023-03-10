@@ -96,7 +96,7 @@ const SignUp = () => {
             e.target.password.value = "";
             e.target.confirm.value = "";
             //if its successful go to login
-            navigate("/signin");
+            navigate("/home");
         } catch (error) {
             console.log(error);
             toast.error("Sign up Failed!");
